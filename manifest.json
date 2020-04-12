@@ -8,7 +8,6 @@
   },
   "omnibox": { "keyword" : "to/" },
   "permissions": [
-  	"*://to/*",
   	"activeTab",
   	"tabs",
   	"webRequest",
