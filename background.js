@@ -24,13 +24,11 @@ chrome.omnibox.onInputEntered.addListener(
 
 chrome.tabs.onUpdated.addListener(function
   (tabId, changeInfo, tab) {
-    var url = tab.url;
-
-    var url_protocol_stripped = /^http[s]?:\/\/(.*)/g.exec(url);
-
-    if (url_protocol_stripped != null && url_protocol_stripped.length >= 2) {
-      var match = url_protocol_stripped[[1]].split("/");
-      doRedirectIfSaved(tabId, match[0], match.splice(1));
+    // read changeInfo data and do something with it (like read the url)
+    if (changeInfo.url) {
+      if (changeInfo.url == 'http://to/') {
+        chrome.tabs.update(tabId, { url: 'https://google.com' });
+      }
     }
   }
 );
